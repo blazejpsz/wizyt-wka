@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   /**********************************************************
            *                                                        *
-           *         Funtcion change photo / text                    *
+           *         Funtcion change photo / text                   *
            *                                                        *
            *********************************************************/
 
@@ -107,8 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Align(
         alignment: Alignment.center,
         child: Text(
-            """Cześć, mam na imię Błażej i od ponad 10 lat prowadzę agencję fotograficzną w Poznaniu. 2 lata temu postanowiłem zmienić swój kierunek działania. Nowy kierunek rozwoju obrałem pod wpływem swojego taty, programisty. Od lat dzielił się ze mną swoją wiedzą w tym zakresie. Wraz ze wzrostem świadomości i mojej wiedzy zdecydowałem, że bliżej mi do łączenia backendu z
-frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatnim czasie intensywnie uczę się Fluttera. """,
+            """2 lata temu postanowiłem zmienić swój kierunek działania. Nowy kierunek rozwoju obrałem pod wpływem swojego taty, programisty. Od lat dzielił się ze mną swoją wiedzą w tym zakresie. W ostatnim roku zrobiłem obszerny kurs wiedzy o Pythonie. Wraz ze wzrostem świadomości i mojej wiedzy zdecydowałem, że bliżej mi do łączenia backendu z frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatnim czasie intensywnie uczę się Fluttera. """,
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: fontSize(0))));
   }
@@ -203,7 +202,7 @@ frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatni
            *********************************************************/
 
           // ----------------------------------------------
-          // box nr. 0 - imię i nazwisko
+          // box nr. 0
           // ----------------------------------------------
           GestureDetector(
             onTap: () => _tappedBox(0),
