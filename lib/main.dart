@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   /**********************************************************
            *                                                        *
-           *         Funcion change photo / text                    *
+           *         Funtcion change photo / text                    *
            *                                                        *
            *********************************************************/
 
@@ -198,7 +198,7 @@ frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatni
         children: [
           /**********************************************************
            *                                                        *
-           *                     W I E R S Z   0                    *
+           *                     R O W   0                          *
            *                                                        *
            *********************************************************/
 
@@ -216,7 +216,7 @@ frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatni
                 child: _selectedWidget_0()),
           ),
           // ----------------------------------------------
-          // box nr. 1 - moje zdjęcie
+          // box nr. 1
           // ----------------------------------------------
           GestureDetector(
             onTap: () => _tappedBox(1),
@@ -230,7 +230,7 @@ frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatni
                 child: _selectedWidget_1()),
           ),
           // ----------------------------------------------
-          // box nr. 2 - co chcę
+          // box nr. 2
           // ----------------------------------------------
           GestureDetector(
             onTap: () => _tappedBox(2),
@@ -246,7 +246,7 @@ frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatni
 
           /**********************************************************
            *                                                        *
-           *                     W I E R S Z   1                    *
+           *                     R O W   1                          *
            *                                                        *
            *********************************************************/
 
@@ -295,7 +295,7 @@ frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatni
 
           /**********************************************************
            *                                                        *
-           *                     W I E R S Z   2                    *
+           *                     R O W   2                          *
            *                                                        *
            *********************************************************/
 
