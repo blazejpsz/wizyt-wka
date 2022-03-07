@@ -1,6 +1,6 @@
 // ignore_for_file: slash_for_doc_comments
 
-import 'package:flutter/gestures.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Droids on roids',
       theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: const MyHomePage(title: 'Błażej Pszczółkowski for Droids on roids'),
+      home: const MyHomePage(title: 'Błażej Pszczółkowski'),
     );
   }
 }
@@ -56,22 +56,17 @@ class _MyHomePageState extends State<MyHomePage> {
       cellState[tappedIndex] = defaultCellState;
     }
     tappedIndex = idx;
-    cellState[tappedIndex] = !cellState[tappedIndex];
 
-    setState(() {});
+    setState(() {
+      cellState[tappedIndex] = !cellState[tappedIndex];
+    });
   }
 
   double _borderWidth(int index) => (index == tappedIndex) ? 3.0 : 1.0;
-  double fontSize(int index) => (index == tappedIndex) ? 30.0 : 15.0;
+  double fontSize() => kIsWeb ? 15 : 8.0;
   Color _borderColor(int index) => (index == tappedIndex)
-      ? Color.fromARGB(255, 211, 71, 66)
+      ? Color.fromARGB(255, 200, 100, 97)
       : Color.fromARGB(255, 168, 211, 240);
-
-  /**********************************************************
-           *                                                        *
-           *         Funtcion change photo / text                   *
-           *                                                        *
-           *********************************************************/
 
   Widget _selectedWidget_0() {
     if (cellState[0]) {
@@ -90,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Na lewo Adaś (2,5 roku),
   Na prawo Kacper (6,5).""",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: fontSize(0))));
+            style: TextStyle(fontSize: fontSize())));
   }
 
   Widget _selectedWidget_2() {
@@ -109,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Text(
             """2 lata temu postanowiłem zmienić swój kierunek działania. Nowy kierunek rozwoju obrałem pod wpływem swojego taty, programisty. Od lat dzielił się ze mną swoją wiedzą w tym zakresie. W ostatnim roku zrobiłem obszerny kurs wiedzy o Pythonie. Wraz ze wzrostem świadomości i mojej wiedzy zdecydowałem, że bliżej mi do łączenia backendu z frontendem. Moją ambicją jest tworzenie aplikacji mobilnych, dlatego w ostatnim czasie intensywnie uczę się Fluttera. """,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: fontSize(0))));
+            style: TextStyle(fontSize: fontSize())));
   }
 
   Widget _selectedWidget_4() {
@@ -119,9 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Align(
         alignment: Alignment.center,
         child: Text(
-            "Cześć, jestem Błażej Pszczółkowski,\n fotograf i właściciel agencji fotograficznej Flash Group,\n obecnie robie wszystko by wkrótce stać się Flutter Developer",
+            "Cześć, jestem Błażej Pszczółkowski,\n fotograf i właściciel agencji fotograficznej Flash Group.\n Obecnie robię wszystko by wkrótce stać się Flutter Developer",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: fontSize(40))));
+            style: TextStyle(fontSize: fontSize())));
   }
 
   Widget _selectedWidget_5() {
@@ -133,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Text(
             'Oczekiwania ? \n Przygotowałem dla Was projekt, ponieważ szukam, firmy, która pomoże mi w nauce przy podstawowych projektach komercyjnych oraz wprowadzi na rynek pracy',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: fontSize(0))));
+            style: TextStyle(fontSize: fontSize())));
   }
 
   Widget _selectedWidget_6() {
@@ -147,35 +142,29 @@ class _MyHomePageState extends State<MyHomePage> {
     if (cellState[7]) {
       return Image.asset('images/bp_8.jpg');
     }
-    return Center(
-      child: RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(
-          children: [
-            const TextSpan(
-              text: "Phone number: 608 142 707\n",
-              style: TextStyle(color: Colors.black),
-            ),
-            TextSpan(
-              text: 'Linkedin\n',
-              style: const TextStyle(color: Colors.blue),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  launch(
-                      'https://www.linkedin.com/in/b%C5%82a%C5%BCej-pszcz%C3%B3%C5%82kowski-00955b192/');
-                },
-            ),
-            TextSpan(
-              text: 'Github',
-              style: const TextStyle(color: Colors.blue),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  launch('https://github.com/blazejpsz/');
-                },
-            )
-          ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        const Text(
+          "Phone number: 608 142 707",
+          style: TextStyle(color: Colors.black),
+          maxLines: 2,
+          textAlign: TextAlign.center,
         ),
-      ),
+        GestureDetector(
+          onTap: () {
+            launch(
+                'https://www.linkedin.com/in/b%C5%82a%C5%BCej-pszcz%C3%B3%C5%82kowski-00955b192/');
+          },
+          child: Text('Linkedin', style: TextStyle(color: Colors.blue)),
+        ),
+        GestureDetector(
+          onTap: () {
+            launch('https://github.com/blazejpsz/');
+          },
+          child: Text('Github', style: TextStyle(color: Colors.blue)),
+        ),
+      ],
     );
   }
 
@@ -207,8 +196,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(0),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                     border: Border.all(
                         color: _borderColor(0), width: _borderWidth(0))),
@@ -220,8 +207,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(1),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(1), width: _borderWidth(1)),
@@ -234,8 +219,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(2),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(2), width: _borderWidth(2)),
@@ -255,8 +238,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(3),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(3), width: _borderWidth(3)),
@@ -269,8 +250,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(4),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(4), width: _borderWidth(4)),
@@ -283,8 +262,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(5),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(5), width: _borderWidth(5)),
@@ -304,8 +281,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(6),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(6), width: _borderWidth(6)),
@@ -318,8 +293,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(7),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(7), width: _borderWidth(7)),
@@ -332,8 +305,6 @@ class _MyHomePageState extends State<MyHomePage> {
           GestureDetector(
             onTap: () => _tappedBox(8),
             child: Container(
-                margin: const EdgeInsets.all(0.0),
-                padding: const EdgeInsets.all(0.0),
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _borderColor(8), width: _borderWidth(8)),
